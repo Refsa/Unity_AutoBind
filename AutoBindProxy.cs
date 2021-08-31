@@ -7,7 +7,7 @@ public class AutoBindProxy : MonoBehaviour
 {
     bool isBound = false;
 
-    void Awake() 
+    void OnEnable() 
     {
         if (!isBound)
         {
