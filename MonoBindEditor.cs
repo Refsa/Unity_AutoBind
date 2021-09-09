@@ -14,7 +14,7 @@ public class MonoBindDrawer : PropertyDrawer
         // EditorGUI.EndProperty();
 
         Rect nameRect = position;
-        nameRect.width = position.width * 0.35f;
+        nameRect.width = position.width * 0.5f;
         EditorGUI.LabelField(nameRect, property.displayName + $" ({fieldInfo.FieldType.Name})");
 
         Rect hasBindRect = position;
@@ -23,10 +23,13 @@ public class MonoBindDrawer : PropertyDrawer
 
         if (property.objectReferenceValue != null)
         {
+            Color oldColor = GUI.color;
+            GUI.color = Color.green;
             if (GUI.Button(hasBindRect, EditorGUIUtility.IconContent("Toolbar Plus").image))
             {
                 Selection.activeObject = property.objectReferenceValue;
             }
+            GUI.color = oldColor;
         }
         else
         {
